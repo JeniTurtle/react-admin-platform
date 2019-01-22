@@ -1,0 +1,24 @@
+.ant-upload.ant-upload-select-picture-card {
+  display: table;
+}
+
+.ant-upload.ant-upload-select-picture-card > .ant-upload {
+  width: 100%;
+  height: 100%;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.rdw-editor-toolbar {
+  margin-bottom: 0 !important;
+}
+
+.rdw-editor-main {
+  border: 1px solid #F1F1F1;
+  border-top: 0;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 14px;
+  min-height: 200px;
+}

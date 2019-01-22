@@ -1,0 +1,26 @@
+.layout-container {
+  margin-left: 200px;
+  transition: all .2s;
+
+  .layout-sider {
+    overflow: hidden;
+
+    .ant-layout-sider-children {
+      padding-right: 200px;
+      overflow: auto;
+    }
+  }
+}
+
+.layout-container-collapsed {
+  margin-left: 64px;
+  transition: all .2s;
+}
+
+.layout-right {
+  min-height: 100vh;
+}
+
+.layout-content {
+  padding: 0 14px;
+}
