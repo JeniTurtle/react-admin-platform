@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col, Card, Steps, Button, message } from 'antd';
-import Bcrumb from '@/components/Bcrumb'
 import './Laptop.scss'
 
 const Step = Steps.Step;
@@ -37,7 +36,6 @@ class Laptop extends React.Component {
         const { current } = this.state;
         return (
             <div className="laptop-container">
-                <Bcrumb />
                 <Row>
                     <Col span={24}>
                         <Card title="项目上手" className="study-card">

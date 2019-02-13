@@ -16,6 +16,10 @@ const generateRouter = (Component) => {
 export default {
     generateRouter,
     Login: generateRouter(import('../containers/Login')),
+    Setting: {
+        Help:  generateRouter(import('../components/Setting/Help')),
+        UserList: generateRouter(import('../containers/User/UserList')),
+    },
     Example: {
         Laptop: generateRouter(import('../components/Example/Laptop')),
         UI: {
@@ -41,5 +45,5 @@ export default {
         },
         Map: generateRouter(import('../components/Example/Map')),
         Gallery: generateRouter(import('../components/Example/Gallery')),
-    }
+    },
 }

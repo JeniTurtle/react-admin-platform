@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card } from 'antd'
-import Bcrumb from '@/components/Bcrumb'
 import './Map.scss'
 
 class Map extends React.Component{
@@ -15,7 +14,6 @@ class Map extends React.Component{
     render() {
         return (
             <div>
-                <Bcrumb />
                 <Card>
                     <div className="mapContainer" id="mapContainer" style={{height:500}}></div>
                 </Card>

@@ -1,7 +1,6 @@
 import React from 'react'
 import {Card,Form,Button,Input,Checkbox,Radio,Select,Switch,DatePicker,TimePicker,Upload,Icon,message, InputNumber} from 'antd'
 import moment from 'moment'
-import Bcrumb from '@/components/Bcrumb'
 import './Form.scss'
 
 const FormItem = Form.Item;
@@ -65,7 +64,6 @@ class FormRegister extends React.Component{
         }
         return (
             <div>
-                <Bcrumb />
                 <Card title="注册表单">
                     <Form layout="horizontal">
                         <FormItem label="用户名" {...formItemLayout}>

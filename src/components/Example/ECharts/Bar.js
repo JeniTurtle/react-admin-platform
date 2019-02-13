@@ -8,7 +8,6 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/markPoint';
-import Bcrumb from '@/components/Bcrumb'
 
 class Bar extends React.Component {
 
@@ -130,7 +129,6 @@ class Bar extends React.Component {
     render(){
         return (
             <div>
-                <Bcrumb />
                 <Card title="柱形图表之一">
                     <ReactEcharts option={this.getOption2()} theme="React" notMerge={true} lazyUpdate={true} style={{ height: 500 }} />
                 </Card>

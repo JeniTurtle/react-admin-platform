@@ -1,8 +1,7 @@
 import React from 'react'
 import { Menu, Icon, Layout } from 'antd';
 import { NavLink } from 'react-router-dom'
-import { getHashPath } from '@/common/utils/functions'
-import menuConfig, { getMenuIndexList } from '@/config/menuConfig'
+import { getHashPath, getMenuIndexList } from '@/common/utils/functions'
 import './NavLeft.scss'
 import loginImg from '@/assets/images/common/logo.svg'
 
@@ -13,14 +12,6 @@ class NavLeft extends React.Component {
 
     constructor(props) {
         super(props);
-    }
-
-    componentWillMount() {
-        const menuTreeNode = this.renderMenu(menuConfig);
-
-        this.setState({
-            menuTreeNode,
-        })
     }
 
     toggle = () => {
@@ -59,8 +50,7 @@ class NavLeft extends React.Component {
     };
 
     render() {
-        const { menuTreeNode } = this.state;
-        const { collapsed, mode } = this.props;
+        const { collapsed, mode, menuConfig } = this.props;
         const defaultSelectedKey = getHashPath(menuConfig[0].key);
         const menuIndexList = getMenuIndexList(menuConfig, defaultSelectedKey);
         const defaultOpenKey = menuIndexList && menuIndexList.length > 0
@@ -81,7 +71,7 @@ class NavLeft extends React.Component {
                     defaultOpenKeys={ [defaultOpenKey] }
                     defaultSelectedKeys={ [defaultSelectedKey] }
                 >
-                    { menuTreeNode }
+                    { this.renderMenu(menuConfig) }
                 </Menu>
             </Sider>
         );

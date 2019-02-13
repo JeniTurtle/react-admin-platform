@@ -1,0 +1,42 @@
+.user-list-box {
+  .ant-table-body {
+    th, td {
+      text-align: center;
+
+      .ant-btn-primary {
+        font-weight: normal;
+        padding: 0 15px;
+      }
+    }
+  }
+
+  .gutter-row {
+    .ant-select {
+      width: 100%;
+    }
+  }
+
+  .gutter-row-right-align {
+    text-align: right;
+
+    .ant-btn-primary {
+      width: 100%;
+    }
+  }
+
+  .custom-filter-dropdown {
+    padding: 8px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+
+    input {
+      width: 130px;
+      margin-right: 8px;
+    }
+  }
+
+  .highlight {
+    color: #f50;
+  }
+}

@@ -71,3 +71,47 @@ export const formateDate = (fmt, date) => {
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
     return fmt;
 };
+
+/**
+ * 查询指定menu的索引列表, 方便遍历出该menu的整个层级
+ * @param obj
+ * @param value
+ * @param tmp
+ * @param deep
+ * @returns {*}
+ */
+export const getMenuIndexList = (obj, value, tmp=[], deep=0) => {
+    for (let index in obj) {
+        let item = obj[index];
+        if (index > 0) {
+            tmp.pop()
+        }
+        tmp.push(index)
+
+        if (item.key === value) {
+            return tmp
+        } else if (item.children) {
+            let ret = getMenuIndexList(item.children, value, tmp, deep+1)
+            if (ret) {
+                return ret
+            } else if (deep == 0) {
+                tmp = []
+            } else {
+                tmp.pop()
+            }
+        }
+    }
+};
+
+/**
+ * 随机生成16进制颜色
+ * @returns {string}
+ */
+export const getRandomColor = () => {
+    const rand = Math.floor(Math.random( ) * 0xFFFFFF).toString(16);
+    if (rand.length == 6) {
+        return "#" + rand;
+    } else {
+        return getRandomColor();
+    }
+};

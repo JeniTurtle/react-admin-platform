@@ -1,5 +1,4 @@
 import React from "react";
-import Bcrumb from '@/components/Bcrumb'
 import { Card, Form, Input, Button, message, Icon, Checkbox } from "antd";
 
 const FormItem = Form.Item;
@@ -19,7 +18,6 @@ class FormLogin extends React.Component{
         const { getFieldDecorator } = this.props.form;
         return (
             <div>
-                <Bcrumb />
                 <Card title="登录行内表单">
                     <Form layout="inline">
                         <FormItem>

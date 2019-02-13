@@ -7,11 +7,8 @@ import { COOKIE_GT_KEY } from '@/config'
 
 const cookie = new Cookie();
 
-export const getCookieToken = (requireAuthed=false) => {
+export const getCookieToken = () => {
     const token = cookie.get(COOKIE_GT_KEY);
-    if (!token && requireAuthed) {
-        window.location.href = '/'
-    }
     return token
 };
 

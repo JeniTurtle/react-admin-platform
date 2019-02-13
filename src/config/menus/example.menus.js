@@ -109,38 +109,7 @@ const menuList = [
     },
 ];
 
-/**
- * 查询指定menu的索引列表, 方便遍历出该menu的整个层级
- * @param obj
- * @param value
- * @param tmp
- * @param deep
- * @returns {*}
- */
-const getMenuIndexList = (obj, value, tmp=[], deep=0) => {
-    for (let index in obj) {
-        let item = obj[index];
-        if (index > 0) {
-            tmp.pop()
-        }
-        tmp.push(index)
-
-        if (item.key === value) {
-            return tmp
-        } else if (item.children) {
-            let ret = getMenuIndexList(item.children, value, tmp, deep+1)
-            if (ret) {
-                return ret
-            } else if (deep == 0) {
-                tmp = []
-            } else {
-                tmp.pop()
-            }
-        }
-    }
-};
-
-export {
-    menuList as default,
-    getMenuIndexList
+export default {
+    menus: menuList,
+    key: 'EXAMPLE'
 }

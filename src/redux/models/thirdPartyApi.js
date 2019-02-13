@@ -16,27 +16,24 @@ const actionTypes = getActionTypes(
 
 const { WEATHER_INFO } = actionTypes;
 
-const getWeather = createAsyncAction(
-    WEATHER_INFO,
-    (input, dispatch) => {
-        const city = '烟台';
-        const api = 'http://api.map.baidu.com/telematics/v3/weather?location='+encodeURIComponent(city)+'&output=json&ak=3p49MVra6urFRGOT9s8UBWr2';
-        return jsonp(api, {
-            success: res => {
-                if (res.status == 'success') {
-                    try {
-                        return res.results[0].weather_data[0];
-                    } catch (e) {
-                        throw new Error('天气数据获取失败')
-                    }
+const getWeather = (input, dispatch) => {
+    const city = '烟台';
+    const api = 'http://api.map.baidu.com/telematics/v3/weather?location='+encodeURIComponent(city)+'&output=json&ak=3p49MVra6urFRGOT9s8UBWr2';
+    return jsonp(api, {
+        success: res => {
+            if (res.status == 'success') {
+                try {
+                    return res.results[0].weather_data[0];
+                } catch (e) {
+                    throw new Error('天气数据获取失败')
                 }
-            },
-            fail: error => {
-                dispatch(globalActions.error(error))
             }
-        });
-    }
-);
+        },
+        fail: error => {
+            dispatch(globalActions.error(error))
+        }
+    });
+};
 
 const setWeatherInfo = (state, { payload }) => {
     return {
@@ -46,12 +43,12 @@ const setWeatherInfo = (state, { payload }) => {
 };
 
 const reducers = createReducer()
-    .when(WEATHER_INFO, getWeather)
+    .when(WEATHER_INFO)
     .done(setWeatherInfo)
     .build({ ...initialState });
 
 const actions = {
-    getWeather,
+    getWeather: createAsyncAction(WEATHER_INFO, getWeather),
 };
 
 export {

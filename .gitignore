@@ -3,6 +3,7 @@
 *.out
 
 build/
+dist/
 
 # IntelliJ project files
 .idea

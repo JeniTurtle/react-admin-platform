@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card, Button, Radio } from 'antd'
-import Bcrumb from '@/components/Bcrumb'
 import './UI.scss'
 
 class Buttons extends React.Component {
@@ -25,7 +24,6 @@ class Buttons extends React.Component {
     render() {
         return (
             <div>
-                <Bcrumb />
                 <Card title="基础按钮" className="card-wrap">
                     <Button type="primary">Example</Button>
                     <Button>Example</Button>

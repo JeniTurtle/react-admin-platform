@@ -8,7 +8,6 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/markPoint';
-import Bcrumb from '@/components/Bcrumb'
 
 class Line extends React.Component {
 
@@ -165,7 +164,6 @@ class Line extends React.Component {
     render() {
         return (
             <div>
-                <Bcrumb />
                 <Card title="折线图表之一">
                     <ReactEcharts
                         option={this.getOption()}

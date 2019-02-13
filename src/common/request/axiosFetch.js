@@ -25,10 +25,9 @@ const axiosPost = axios.create({
  * @param method
  * @param success
  * @param fail
- * @param final
  * @returns {Promise}
  */
-export const axiosFetch = (url, params, { method, success, fail, final }) => {
+export const axiosFetch = (url, params, { method, success, fail }) => {
     return new Promise((resolve, reject) => {
         axiosSync(url, params , method)
             .then(resp => {
@@ -37,9 +36,6 @@ export const axiosFetch = (url, params, { method, success, fail, final }) => {
             })
             .catch(err => {
                 reject(err, fail && fail(err))
-            })
-            .finally(() => {
-                final && final();
             })
     })
 };

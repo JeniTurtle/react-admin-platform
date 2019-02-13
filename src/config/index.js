@@ -8,6 +8,6 @@ const config = isProduction ? configProd : configDev;
 export default {
     IS_PRODUCTION: isProduction,
     COOKIE_GT_KEY: 'EX_GT',
-    HEAD_GT_KEY: 'Authorization',
+    HEAD_GT_KEY: 'AUTHORIZATION',
     ...config
 };

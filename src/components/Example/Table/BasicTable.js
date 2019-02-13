@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Table, Modal, Button, message } from 'antd';
-import Bcrumb from '@/components/Bcrumb'
 import { axiosSync } from '@/common/request/axiosFetch'
 
 class BasicTable extends React.Component{
@@ -209,7 +208,6 @@ class BasicTable extends React.Component{
         }
         return (
             <div>
-                <Bcrumb />
                 <Card title="基础表格">
                     <Table
                         bordered

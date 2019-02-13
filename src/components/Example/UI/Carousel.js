@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card, Carousel } from 'antd'
-import Bcrumb from '@/components/Bcrumb'
 import './UI.scss'
 import img1 from '@/assets/images/example/carousel/carousel-1.jpg'
 import img2 from '@/assets/images/example/carousel/carousel-2.jpg'
@@ -11,7 +10,6 @@ class Carousels extends React.Component{
     render() {
         return (
             <div>
-                <Bcrumb />
                 <Card title="文字背景轮播" className="card-wrap">
                     <Carousel autoplay effect="fade">
                         <div><h3>Ant Motion Banner - React</h3></div>

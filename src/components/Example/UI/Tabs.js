@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card, Tabs, message, Icon } from 'antd'
-import Bcrumb from '@/components/Bcrumb'
 import './UI.scss'
 
 const TabPane = Tabs.TabPane;
@@ -72,7 +71,6 @@ class Buttons extends React.Component {
     render(){
         return (
             <div>
-                <Bcrumb />
                 <Card title="Tab页签" className="card-wrap">
                     <Tabs defaultActiveKey="1" onChange={this.handleCallback}>
                         <TabPane tab="Tab 1" key="1">欢迎学习React课程</TabPane>

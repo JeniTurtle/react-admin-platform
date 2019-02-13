@@ -19,8 +19,14 @@
 
 .layout-right {
   min-height: 100vh;
+  position: relative;
 }
 
 .layout-content {
-  padding: 0 14px;
+  padding: 62px 20% 70px 28px;
+  height: 200px;
+  overflow: scroll;
+  width: 120%;
+  position: relative;
+  right: 14px;
 }

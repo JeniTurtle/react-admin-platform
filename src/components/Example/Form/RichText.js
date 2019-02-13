@@ -2,7 +2,6 @@ import React from 'react'
 import {Button,Card,Modal} from 'antd'
 import { Editor } from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import Bcrumb from '@/components/Bcrumb'
 import draftjs from 'draftjs-to-html'
 
 class RichText extends React.Component{
@@ -42,7 +41,6 @@ class RichText extends React.Component{
         const { editorContent, editorState, showRichText } = this.state;
         return (
             <div>
-                <Bcrumb />
                 <Card>
                     <Button type="primary" style={{ marginRight: 10 }} onClick={this.handleClearContent}>清空内容</Button>
                     <Button type="primary" onClick={this.handleGetText}>获取HTML文本</Button>

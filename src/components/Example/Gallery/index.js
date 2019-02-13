@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card, Row, Col, Modal } from 'antd'
-import Bcrumb from '@/components/Bcrumb'
 import img1 from '@/assets/images/example/gallery/1.png'
 import img2 from '@/assets/images/example/gallery/2.png'
 import img3 from '@/assets/images/example/gallery/3.png'
@@ -52,7 +51,6 @@ class Gallery extends React.Component{
 
         return (
             <div className="card-wrap">
-                <Bcrumb />
                 <Row gutter={5}>
                     <Col md={6}>
                         {imgList[0]}

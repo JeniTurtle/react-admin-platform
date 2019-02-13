@@ -1,0 +1,48 @@
+.user-info-box {
+  position: fixed;
+  z-index: 501;
+  right: 0;
+  top: 0;
+  height: 100%;
+  overflow-y: scroll;
+  width: 340px;
+  transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  -webkit-transition: width 0.5s;
+  -o-transition: width 0.5s;
+
+  .ant-card-head {
+    height: 60px;
+    line-height: 60px;
+
+    .user-info-title {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+
+      .ant-avatar-string {
+        transform: none !important;
+      }
+    }
+  }
+
+  .item-row {
+    font-size: 13px;
+    height: 42px;
+    line-height: 42px;
+
+    .item-left {
+      text-align: right;
+      color: #848484;
+    }
+
+    .item-right {
+
+    }
+  }
+}
+
+.user-info-box-hide {
+  width: 0;
+}

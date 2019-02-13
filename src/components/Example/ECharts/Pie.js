@@ -8,7 +8,6 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/markPoint';
-import Bcrumb from '@/components/Bcrumb'
 
 class Pie extends React.Component {
 
@@ -226,7 +225,6 @@ class Pie extends React.Component {
     render() {
         return (
             <div>
-                <Bcrumb />
                 <Card title="饼形图表之一">
                     <ReactEcharts
                         option={this.getOption()}

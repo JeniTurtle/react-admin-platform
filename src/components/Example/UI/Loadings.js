@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card, Spin, Icon, Alert } from  'antd'
-import Bcrumb from '@/components/Bcrumb'
 import './UI.scss'
 
 class Loadings extends React.Component{
@@ -8,7 +7,6 @@ class Loadings extends React.Component{
         const icon = <Icon  type="loading" style={{fontSize:24}}/>
         return (
             <div>
-                <Bcrumb />
                 <Card title="Spin用法" className="card-wrap">
                     <Spin size="small"/>
                     <Spin style={{margin:'0 10px'}}/>

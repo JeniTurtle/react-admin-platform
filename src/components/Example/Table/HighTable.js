@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Table, Modal, Button, message, Badge } from 'antd';
-import Bcrumb from '@/components/Bcrumb'
 import { axiosSync } from '@/common/request/axiosFetch'
 
 class HighTable extends React.Component {
@@ -423,7 +422,6 @@ class HighTable extends React.Component {
         ];
         return (
             <div>
-                <Bcrumb />
                 <Card title="头部固定">
                     <Table
                         bordered
