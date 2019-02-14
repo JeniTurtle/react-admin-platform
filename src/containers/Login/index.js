@@ -41,7 +41,7 @@ class Login extends React.Component {
 
     return (
         <div className="login-container">
-          { !!isLogined && <Redirect to={{ pathname: "/home" }} /> }
+          { !!isLogined && <Redirect to={{ pathname: "/example/laptop" }} /> }
 
           <div className="login-form">
             <Spin spinning={loading}>

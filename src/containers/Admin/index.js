@@ -62,7 +62,7 @@ class Admin extends React.Component {
 
     render() {
         const { mode, collapsed } = this.state;
-        const { weatherInfo, menuConfig, rootBcrumb, isLogined, redirectLogin } = this.props;
+        const { weatherInfo, menuConfig, rootBcrumb, isLogined, redirectLogin, clearAuth, selfInfo } = this.props;
         return (
             <Layout className={ collapsed ? 'layout-container-collapsed' : 'layout-container' }>
                 { !isLogined && redirectLogin }
@@ -78,6 +78,8 @@ class Admin extends React.Component {
                         menuKey={ menuConfig.key }
                         toggle={ collapsed => this.toggle(collapsed) }
                         weatherInfo={ weatherInfo }
+                        logout={ clearAuth }
+                        userInfo={ selfInfo }
                     />
                     <Content className="layout-content">
                         <Bcrumb menuConfig={ menuConfig.menus } rootBcrumb={ rootBcrumb } />
@@ -94,6 +96,7 @@ const mapStateToProps = (state, ownProps) => {
     let { thirdParty, auth } = state;
     return {
         isLogined: auth.isLogined,
+        selfInfo: auth.userInfo,
         redirectLogin: auth.redirectLogin,
         weatherInfo: thirdParty.weatherInfo,
     }

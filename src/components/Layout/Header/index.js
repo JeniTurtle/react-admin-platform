@@ -23,6 +23,16 @@ class Header extends React.Component {
         this.props.toggle(!this.props.collapsed);
     };
 
+    userMenusClick = ({ key }) => {
+        const { logout } = this.props;
+
+        switch(key) {
+            case 'logout':
+                logout()
+                break;
+        }
+    };
+
     renderWeather = (weatherInfo) => {
         return (
             <div className="weather">
@@ -60,15 +70,16 @@ class Header extends React.Component {
     };
 
     render() {
-        const { collapsed, weatherInfo, menuKey } = this.props;
+        const { collapsed, weatherInfo, menuKey, userInfo } = this.props;
+        console.log(userInfo)
         return (
             <Row className="layout-header">
                 <Icon className="trigger" type={ collapsed ? 'menu-unfold' : 'menu-fold' } onClick={ this.toggle } />
                 <Menu mode="horizontal" className="layout-header-menu" selectedKeys={ [menuKey || "home"] }>
                     { this.renderMenu(rootMenus) }
                 </Menu>
-                <Menu mode="horizontal" className="layout-header-user">
-                    <SubMenu title={<span><Icon type="user" />admins</span>}>
+                <Menu mode="horizontal" onClick={ this.userMenusClick } className="layout-header-user">
+                    <SubMenu title={<span><Icon type="user" />{ userInfo.realName || userInfo.username }</span>}>
                         <Menu.Item key="modifySelf"><Icon type="skin" />个人修改</Menu.Item>
                         <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
                     </SubMenu>

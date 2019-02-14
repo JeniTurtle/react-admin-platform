@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { Modal, Form, Input, Select, Radio, Cascader } from 'antd'
+import { Modal, Form, Input, Select, Radio, Cascader, message } from 'antd'
 import userActions from '@/redux/models/user'
 import { buildTree } from '@/redux/models/department'
 import './AddUser.scss'
@@ -24,10 +24,15 @@ class AddUser extends React.Component {
         e.preventDefault();
         form.validateFields((err, values) => {
             if (!err) {
+                if (values.department.length > 0) {
+                    values.department = values.department[values.department.length - 1];
+                } else {
+                    delete values.department;
+                }
                 addUser({
                     input: values,
                     callback: (resp) => {
-                        console.log('新用户添加成功: ', resp);
+                        message.success('用户添加成功');
                         success(resp);
                         form.resetFields();
                     },
@@ -40,6 +45,8 @@ class AddUser extends React.Component {
         const { visiable, cancel, form, loading, departmentList } = this.props;
         const { isActive, gender } = this.state;
         const { getFieldDecorator } = form;
+        // Cascader组件有个bug, 会修改传入的数据对象, 所以下面每次都深拷贝一个新的对象
+        const departments = eval(JSON.stringify(departmentList));
 
         const formItemLayout = {
             labelCol: {
@@ -52,11 +59,6 @@ class AddUser extends React.Component {
             },
         };
 
-        const displayRender = (labels, selectedOptions) => labels.map((label, i) => {
-            const option = selectedOptions[i];
-            return <span key={option.value}>{label} { i !== labels.length - 1 && '/' } </span>;
-        });
-
         const prefixSelector = <Select defaultValue="86" style={{ width: 60 }}>
             <Select.Option value="86">+86</Select.Option>
         </Select>;
@@ -64,6 +66,7 @@ class AddUser extends React.Component {
         return <div className="add-user-modal">
             <Modal
                 title="添加用户"
+                wrapClassName="vertical-center-modal"
                 visible={ visiable }
                 confirmLoading={ loading }
                 onOk={ this.submitUser }
@@ -81,6 +84,7 @@ class AddUser extends React.Component {
                         {getFieldDecorator('username', {
                             rules: [{
                                 required: true, message: '请输入用户名',
+                                whitespace: true
                             }],
                         })(
                             <Input name="username" />
@@ -95,6 +99,7 @@ class AddUser extends React.Component {
                         {getFieldDecorator('realName', {
                             rules: [{
                                 required: true, message: '请输入真实姓名',
+                                whitespace: true
                             }],
                         })(
                             <Input name="realName" />
@@ -152,12 +157,16 @@ class AddUser extends React.Component {
                         label="所属部门"
                         className="add-user-item"
                     >
-                        <Cascader
-                            options={ buildTree(departmentList) }
-                            placeholder="请选择部门"
-                            changeOnSelect
-                            displayRender={ displayRender }
-                        />
+                        {getFieldDecorator('department', {
+                            initialValue: [],
+                            rules: [{ type: 'array' }],
+                        })(
+                            <Cascader
+                                options={ buildTree(departments) }
+                                placeholder="请选择部门"
+                                changeOnSelect
+                            />
+                        )}
                     </FormItem>
                     <FormItem
                         { ...formItemLayout }

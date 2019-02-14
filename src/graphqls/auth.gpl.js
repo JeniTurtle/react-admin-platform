@@ -3,6 +3,7 @@ export const LOGIN_GPL = `
       userLogin(input: $input) {
         payload {
           username,
+          realName,
           isStaff,
           isActive,
           isSuperuser,
@@ -25,6 +26,7 @@ export const REFRESH_TOKEN_GPL = `
       userRefreshToken(input: $input) {
         payload {
           username,
+          realName,
           isStaff,
           isActive,
           isSuperuser,

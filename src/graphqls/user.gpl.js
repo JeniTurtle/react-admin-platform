@@ -60,6 +60,7 @@ export const QUERY_USER_INFO_AND_GROUPS_GPL = `
         email
         isActive
         department {
+          id
           departmentName
         }
         groups {
@@ -82,6 +83,36 @@ export const QUERY_USER_INFO_AND_GROUPS_GPL = `
 export const ADD_USER_GPL = `
     mutation registerUser($input: RegisterUserInput!) {
       userRegisterUser(input: $input) {
+        payload {
+          id
+          username
+          gender
+          isActive
+          mobile
+          email
+        }
+      }
+    }
+`;
+
+export const UPDATE_USER_INFO_GPL = `
+    mutation updateUserInfo($input: UpdateUserInfoInput!) {
+      userUpdateUserInfo(input: $input) {
+        payload {
+          id
+          username
+          gender
+          isActive
+          mobile
+          email
+        }
+      }
+    }
+`;
+
+export const RESET_USER_PASSWORD_GPL = `
+    mutation resetPassword($input: ResetUserPasswordInput!) {
+      userResetUserPassword(input: $input) {
         payload {
           id
           username

@@ -61,6 +61,7 @@ const buildTree = (list) => {
         } else {
             tree.push(temp[i]);
         }
+        temp[i].key = temp[i].id;
         temp[i].value = temp[i].id;
         temp[i].label = temp[i].departmentName;
         delete temp[i].id;

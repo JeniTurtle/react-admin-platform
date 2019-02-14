@@ -53,9 +53,9 @@ class UserList extends React.Component {
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
     }
 
-    refresh = () => {
+    refresh = (initState={}) => {
         const { pageItemNum, orderColumn, defaultState } = this;
-        this.setState({ ...defaultState }) ;
+        this.setState({ ...defaultState, ...initState }) ;
         this.props.getUserList({
             first: pageItemNum,
             order: orderColumn, // 创建时间倒序
@@ -68,6 +68,7 @@ class UserList extends React.Component {
                 return message.error("无效的用户ID")
             }
             this.props.getUserInfoAndGroups({ id: userInfo.id });
+            this.props.getDepartmentList();
             this.setState({
                 isShowUserInfo: true,
             })
@@ -170,7 +171,7 @@ class UserList extends React.Component {
     };
 
     render() {
-        const { loading, userList, userInfo, selfInfo, getDepartmentList } = this.props;
+        const { loading, userList, userInfo, selfInfo, getDepartmentList, getUserInfoAndGroups } = this.props;
         const { isShowUserInfo, isShowAddUser } = this.state;
 
         const columns = [{
@@ -330,7 +331,7 @@ class UserList extends React.Component {
                                     placeholder="输入用户名搜索"
                                     value={ this.state.username }
                                     onChange={ e => this.setState({username: e.target.value}) }
-                                    onSearch={ value => this.onUsernameSearch() }
+                                    onSearch={ value => this.onSearch() }
                                 />
                             </Col>
                             <Col span={13}>
@@ -368,16 +369,15 @@ class UserList extends React.Component {
                     loading={ loading }
                     userInfo={ userInfo }
                     close={ () => { this.setState({ isShowUserInfo: false }) } }
+                    success={ () => {
+                        this.refresh({ isShowUserInfo: true });
+                    } }
                 />
 
                 <AddUser
                     visiable={ isShowAddUser }
                     cancel={ () => { this.setState({ isShowAddUser: false }) } }
-                    success={ (resp) => {
-                        this.setState({ isShowAddUser: false });
-                        this.refresh();
-                        message.success('用户添加成功');
-                    } }
+                    success={ this.refresh }
                 />
             </div>
         );
